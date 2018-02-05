@@ -1,0 +1,37 @@
+
+
+
+ .menu {
+    float: left;
+}
+
+/* #menu a:hover, #menu li:active, .subMenu a:hover, .subMenu a:active {
+  background-color: #eee;
+  border-color: #999;
+}	
+ */
+.menu ul {
+    display: none;
+    margin: 0;   
+  }
+  
+  .menu .menu__title {
+    font-weight: bold;
+    cursor: pointer;
+    margin: 4px;
+  }
+  
+  .menu .menu__title:before {
+    padding-right: 6px;
+  }
+  
+  .menu.open ul {
+    display: block;
+    position: fixed;
+  }
+
+  .tooltip ul{
+    position: fixed;
+    padding: 10px 20px;
+    background: rgb(214, 214, 214);
+  }
