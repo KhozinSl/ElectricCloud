@@ -1,12 +1,14 @@
 function Menu(options) {
-    var elem;
-    var hideTimer;
+    var elem;  // root element
+    var hideTimer; // timer for hidding
 
     function getElem() {
       if (!elem) render();
       return elem;
     }
-  
+    /*
+      create root element and add event handlers
+  */
     function render() {
       elem = document.createElement('div');
       elem.className = "menu";
@@ -20,6 +22,7 @@ function Menu(options) {
         return false;
       };
       
+
       elem.onmouseover = function(event) {
         if (event.target.closest('.menu__title')) {
           open();
@@ -37,7 +40,10 @@ function Menu(options) {
       }
   
     }
-  
+  /*
+    create drop-dowm list
+    and we will place it depending on the free space
+  */
     function renderItems() {
       var items = options.items || [];
       var list = document.createElement('ul');
@@ -49,11 +55,15 @@ function Menu(options) {
 
       elem.appendChild(list);
 
+      // define the current coordinates
+
       var coords = elem.getBoundingClientRect();
       var left = coords.left + (elem.offsetWidth - list.offsetWidth) / 2;
-      if (left < 0) left = 0; // не вылезать за левую границу окна
+
+      if (left < 0) left = 0; 
       var top = coords.top - list.offsetHeight + 20;
-      if (top < 0) { // не вылезать за верхнюю границу окна
+      
+      if (top < 0) { 
         top = coords.top + elem.offsetHeight - 20;
       }
       list.style.left = left + 'px';
@@ -80,6 +90,7 @@ function Menu(options) {
       else open();
     };
   
+    // make the methods public
     this.getElem = getElem;
     this.close = close;
     this.open = open;
